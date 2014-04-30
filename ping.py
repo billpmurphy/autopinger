@@ -89,19 +89,17 @@ def echo(dest_addr, ping_sock=None):
     return
 
 
-def listen(callback):
+def ip_to_int(ip_str):
     """
-    Listen for incoming ICMP packets on any port, and execute a callback
-    function on each ICMP packet when it is received.
+    Convert an IP address string to its integet representation.
     """
-    sock = create_raw_socket()
-    sock.bind(("", 1))
-    try:
-        while True:
-            callback(sock.recv(1024))
-    except KeyboardInterrupt:
-        print("Done.")
-    finally:
-        sock.close()
-    return
+    return unpack("!I", socket.inet_aton(ip_str))[0]
+
+
+def int_to_ip(ip_int):
+    """
+    Convert an integer representing an IP address to its string representation.
+    """
+    return socket.inet_ntoa(pack('!L', ip_int))
+
 
