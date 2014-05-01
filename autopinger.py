@@ -82,8 +82,8 @@ class AutoPinger(object):
 
         try:
             while range_heap:
-                add_range = heapq.heappop(range_heap)[1]
                 try:
+                    add_range = heapq.heappop(range_heap)[1]
                     ping.echo(add_range.next(), sock)
                     heapq.heappush(
                         range_heap,
@@ -130,8 +130,9 @@ class Listener(multiprocessing.Process):
                     try:
                         run = bool(self.sync.get_nowait())
                     except Queue.Empty:
-                        pass
-                    except:
+                        continue
+                    except Exception as e:
+                        stderr.write(e)
                         run = False
         finally:
             sock.close()

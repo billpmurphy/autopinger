@@ -2,13 +2,13 @@ from time import sleep
 
 import autopinger
 
-def main(filename):
+def main(data_filename, log_filename):
     # start the listener
-    listener = autopinger.Listener("test.txt")
+    listener = autopinger.Listener(log_filename)
     listener.start()
 
     # send pings
-    pinger = autopinger.AutoPinger(filename)
+    pinger = autopinger.AutoPinger(data_filename)
     pinger.send_pings()
 
     # wait for replies and then stop the listener
@@ -16,4 +16,4 @@ def main(filename):
     listener.stop()
 
 if __name__ == "__main__":
-    main("example.txt")
+    main("example.txt", "example_log.txt")

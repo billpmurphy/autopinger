@@ -1,9 +1,10 @@
 Survey the IPv4 address space
 =============================
 
-This pure-Python tool makes it easy to ping every IPv4 address in a
-user-defined set of ranges (up to and including every IPv4 address ever) and
-records the addresses of peers that responded.
+Pure-Python tool that pings every IPv4 address in a user-defined set of ranges
+(up to and including every IPv4 address ever) and records the addresses of
+peers that responded. Useful if you want to survey sections of IPv4 for
+whatever reason.
 
 To install:
 
