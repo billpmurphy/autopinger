@@ -67,9 +67,7 @@ class AutoPinger(object):
     An object containing a list of IP ranges and a socket with which to send
     ICMP requests to them in psuedorandom order.
     """
-    def __init__(self, filename):
-        with open(filename, "r") as range_file:
-            ranges = [line.strip().split(",") for line in range_file]
+    def __init__(self, ranges):
         self.ranges = [IPRange(*r) for r in ranges]
     def send_pings(self):
         """
